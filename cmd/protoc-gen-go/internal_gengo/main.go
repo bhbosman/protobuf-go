@@ -110,6 +110,8 @@ func GenerateFile(gen *protogen.Plugin, file *protogen.File) *protogen.Generated
 
 	genReflectFileDescriptor(gen, g, f)
 
+	genAdditional(gen, g, f)
+
 	return g
 }
 
@@ -498,6 +500,7 @@ func genMessageMethods(g *protogen.GeneratedFile, f *fileInfo, m *messageInfo) {
 	genMessageBaseMethods(g, f, m)
 	genMessageGetterMethods(g, f, m)
 	genMessageSetterMethods(g, f, m)
+	genMessageTypeCodeMethod(g, f, m)
 }
 
 func genMessageBaseMethods(g *protogen.GeneratedFile, f *fileInfo, m *messageInfo) {
